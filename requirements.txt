@@ -1,0 +1,101 @@
+cd "C:\Users\betti\Downloads\cicd"
+python app.py
+
+docker build -t bettina2004/demo:local .
+docker run --rm bettina2004/demo:local
+docker login
+docker tag bettina2004/demo:local bettina2004/demo:latest
+docker push bettina2004/demo:latest
+
+git init
+git add .
+git commit -m "initial commit"
+
+git branch -M main
+git remote add origin
+git remote add origin https://github.com/bettina2004/demo.git
+git push -u origin main
+git add .github/workflows/main.yml
+git commit -m "Add Github Actions workflow to build and push Docker image"
+git push
+
+echo '# update' >> app.py
+git add app.py
+git commit -m "trigger build"
+git push
+
+docker tag bettina2004/demo:local bettina2004/demo:latest
+git add .github/workflows/main.yml
+git commit -m "Add Github Actions workflow to build and push Docker image"
+
+git push
+
+git add .github/workflows/main.yml
+git commit -m "Fix workflow indentation for docker build-push"
+git push
+
+docker pull bettina2004/demo:latest
+docker run --rm bettina2004/demo:latest
+docker build -t bettina2004/demo:latest .
+docker run --rm bettina2004/demo:latest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd "C:\Users\betti\Downloads\cicd"
+
+python app.py
+
+docker build -t bettina2004/demo:local .
+docker run --rm bettina2004/demo:local
+
+docker login
+docker tag bettina2004/demo:local bettina2004/demo:latest
+docker push bettina2004/demo:latest
+
+git init
+git add .
+git commit -m "initial commit"
+git branch -M main
+git remote add origin https://github.com/bettina2004/demo.git
+git push -u origin main
+
+git add .github/workflows/main.yml
+git commit -m "Add GitHub Actions workflow to build and push Docker image"
+git push
+
+git commit --allow-empty -m "trigger build"
+git push
+
+docker pull bettina2004/demo:latest
+docker run --rm bettina2004/demo:latest
